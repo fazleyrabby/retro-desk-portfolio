@@ -213,6 +213,7 @@ function openComputer() {
   whenReady(() => experience.focusObject('crt'));
   overlay.open(lastTrigger);
   overlay.showDesktop();
+  experience.setScreenSource(true);
   lockDesk(true);
 }
 
@@ -221,6 +222,7 @@ function openCrtApp(nextApp: string | null) {
   whenReady(() => experience.focusObject('crt'));
   overlay.open(lastTrigger);
   overlay.showApp(nextApp ?? 'projects');
+  experience.setScreenSource(true);
   lockDesk(true);
 }
 
@@ -231,6 +233,7 @@ function openProject(projectId: string) {
   whenReady(() => experience.focusObject('crt'));
   overlay.open(lastTrigger);
   overlay.showProject(project);
+  experience.setScreenSource(true);
   lockDesk(true);
 }
 
@@ -245,6 +248,7 @@ function insertProject(projectId: string) {
     experience.focusObject('crt');
     overlay.open(lastTrigger);
     overlay.showProject(project);
+  experience.setScreenSource(true);
     lockDesk(true);
   });
 }
@@ -288,6 +292,7 @@ function launchExperiment(experimentId: string) {
   enter('EXPERIMENT_FULLSCREEN', { experimentId });
   overlay.open(lastTrigger);
   overlay.showExperiment(experiment);
+  experience.setScreenSource(true);
   lockDesk(true);
 }
 
@@ -298,6 +303,7 @@ function closeToDesk() {
     uiSound.eject();
   }
   overlay.close();
+  experience.setScreenSource(false);
   book.close();
   experience.spreadDisks(false);
   experience.spreadNotebooks(false);

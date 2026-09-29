@@ -72,6 +72,7 @@ export class Experience {
   private towerWrapper: THREE.Group | null = null;
   private diskLed: THREE.Mesh | null = null;
   private screenMesh: THREE.Mesh | null = null;
+  private screenBaseTexture: THREE.Texture | null = null;
 
   constructor(canvas: HTMLCanvasElement, handlers: ExperienceHandlers) {
     this.canvas = canvas;
@@ -608,6 +609,23 @@ export class Experience {
     return this.moving;
   }
 
+  /**
+   * While the DOM interface is shown on the monitor, blank the backing screen
+   * texture so there is no ghost image behind it; restore it on close.
+   */
+  setScreenSource(active: boolean) {
+    const material = this.sceneData.screenMaterial;
+    if (active) {
+      if (!this.screenBaseTexture) this.screenBaseTexture = material.map as THREE.Texture | null;
+      material.map = null;
+      material.color.setHex(0x0b2225);
+    } else if (this.screenBaseTexture) {
+      material.map = this.screenBaseTexture;
+      material.color.setScalar(.9);
+    }
+    material.needsUpdate = true;
+  }
+
   /** Fan the disk pile open (or back into a stack) for the zoomed selection view. */
   spreadDisks(open: boolean) {
     for (const disk of this.disks.values()) {
@@ -641,15 +659,15 @@ export class Experience {
   getScreenQuad(): THREE.Vector3[] | null {
     if (!this.screenMesh) return null;
     this.screenMesh.updateWorldMatrix(true, false);
-    // Sits just inside the visible picture opening so no edge spills onto the bezel.
-    const inset = .965;
-    const halfWidth = (2.09 / 2) * inset;
-    const halfHeight = (1.29 / 2) * inset;
+    // Matches the molded bezel opening (2.09 x 1.2525) so the surface fills it.
+    const halfWidth = 2.05 / 2;
+    const halfHeight = 1.24 / 2;
+    const center = new THREE.Vector3(0, .001, 0);
     return [
-      this.screenMesh.localToWorld(new THREE.Vector3(-halfWidth, halfHeight, 0)),
-      this.screenMesh.localToWorld(new THREE.Vector3(halfWidth, halfHeight, 0)),
-      this.screenMesh.localToWorld(new THREE.Vector3(halfWidth, -halfHeight, 0)),
-      this.screenMesh.localToWorld(new THREE.Vector3(-halfWidth, -halfHeight, 0)),
+      this.screenMesh.localToWorld(new THREE.Vector3(-halfWidth, halfHeight, 0).add(center)),
+      this.screenMesh.localToWorld(new THREE.Vector3(halfWidth, halfHeight, 0).add(center)),
+      this.screenMesh.localToWorld(new THREE.Vector3(halfWidth, -halfHeight, 0).add(center)),
+      this.screenMesh.localToWorld(new THREE.Vector3(-halfWidth, -halfHeight, 0).add(center)),
     ];
   }
 

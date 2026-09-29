@@ -522,7 +522,7 @@ export function createDeskScene(): DeskScene {
     update: (time: number) => {
       rain.update(time);
       crtLight.intensity = 10.5 + Math.sin(time * 1.7) * .35;
-      screenMaterial.color.setScalar(.88 + Math.sin(time * 2.2) * .015);
+      if (screenMaterial.map) screenMaterial.color.setScalar(.88 + Math.sin(time * 2.2) * .015);
       plant.rotation.z = Math.sin(time * .75) * .013;
     },
   };
