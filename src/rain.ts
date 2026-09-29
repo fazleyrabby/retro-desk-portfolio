@@ -19,6 +19,8 @@ function makeCanvas() {
 
 export function createRainWindow() {
   const random = rng(71831);
+  const compact = window.innerWidth < 700;
+  const scale = compact ? .45 : 1;
   const background = new THREE.TextureLoader().load('/textures/rainy-exterior.webp');
   background.colorSpace = THREE.SRGBColorSpace;
   background.anisotropy = 4;
@@ -27,20 +29,20 @@ export function createRainWindow() {
   const wet = wetCanvas.getContext('2d')!;
   const glass = new THREE.CanvasTexture(wetCanvas);
   glass.colorSpace = THREE.SRGBColorSpace;
-  const drops = Array.from({ length: 180 }, () => ({
+  const drops = Array.from({ length: Math.round(180 * scale) }, () => ({
     x: random() * W, y: random() * H, size: .65 + random() * 2.3,
     speed: 8 + random() * 26, trail: 10 + random() * 58,
   }));
-  const distantRain = Array.from({ length: 190 }, () => ({
+  const distantRain = Array.from({ length: Math.round(190 * scale) }, () => ({
     x: random() * W, y: random() * H, length: 18 + random() * 45,
     speed: 160 + random() * 220, alpha: .025 + random() * .05,
   }));
-  const fineDrops = Array.from({ length: 470 }, () => ({
+  const fineDrops = Array.from({ length: Math.round(470 * scale) }, () => ({
     x: random() * W, y: random() * H, r: .25 + random() * .7,
   }));
   let last = -1;
   function update(time: number) {
-    if (time - last < 1 / 24) return;
+    if (time - last < 1 / (compact ? 16 : 24)) return;
     last = time;
     wet.clearRect(0, 0, W, H);
     // Fine rain outside the pane falls diagonally; heavy beads travel on it.

@@ -111,6 +111,18 @@ let experience: Experience;
 let lastTrigger: HTMLElement | null = null;
 let deskLocked = false;
 
+const compactQuery = window.matchMedia('(max-width: 720px)');
+let isCompact = compactQuery.matches;
+const applyCompact = () => {
+  isCompact = compactQuery.matches;
+  document.body.classList.toggle('is-compact', isCompact);
+};
+applyCompact();
+compactQuery.addEventListener('change', () => {
+  applyCompact();
+  positionScreenLayer();
+});
+
 const overlay = new Overlay({
   onBack: () => handleBack(),
   onCloseToDesk: () => closeToDesk(),
@@ -182,6 +194,10 @@ function quadMatrix(source: Pt[], target: Pt[]): number[] {
 
 function positionScreenLayer() {
   if (!experience || !overlay.isOpen) return;
+  if (isCompact) {
+    if (overlay.root.style.transform) overlay.applyProjection('none');
+    return;
+  }
   const quad = experience.getScreenQuad();
   if (!quad) return;
   const camera = experience.camera;

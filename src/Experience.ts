@@ -34,7 +34,7 @@ export interface ExperienceHandlers {
 }
 
 const views: Record<Exclude<DeskObjectId, 'lamp'>, { position: [number, number, number]; target: [number, number, number] }> = {
-  crt: { position: [-.45, 2.77, 2.9], target: [-.45, 2.77, -.26] },
+  crt: { position: [-.45, 2.76, 2.22], target: [-.45, 2.76, -.28] },
   tower: { position: [.35, 2.15, 2.45], target: [-.45, 1.46, -.3] },
   keyboard: { position: [.55, 2.75, 3.8], target: [.25, 1.25, 1.15] },
   floppy: { position: [-2.92, 2.6, 2.15], target: [-2.9, 1.27, .08] },
