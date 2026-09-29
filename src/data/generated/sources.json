@@ -1,0 +1,158 @@
+[
+  {
+    "path": "astro-portfolio/apps/web/src/data/profile.ts",
+    "kind": "profile"
+  },
+  {
+    "path": "astro-portfolio/apps/web/src/content/about.md",
+    "kind": "about"
+  },
+  {
+    "path": "astro-portfolio/apps/web/src/content/journey.md",
+    "kind": "journey"
+  },
+  {
+    "path": "astro-portfolio/apps/web/src/content/projects/electronic-first.md",
+    "kind": "project"
+  },
+  {
+    "path": "astro-portfolio/apps/web/src/content/projects/moonwater.md",
+    "kind": "experimental"
+  },
+  {
+    "path": "astro-portfolio/apps/web/src/content/projects/acme-switchgear.md",
+    "kind": "project"
+  },
+  {
+    "path": "astro-portfolio/apps/web/src/content/projects/apex-marina.md",
+    "kind": "experimental"
+  },
+  {
+    "path": "astro-portfolio/apps/web/src/content/projects/halo-fan.md",
+    "kind": "experimental"
+  },
+  {
+    "path": "astro-portfolio/apps/web/src/content/projects/signalstack.md",
+    "kind": "project"
+  },
+  {
+    "path": "astro-portfolio/apps/web/src/content/projects/8bit-os.md",
+    "kind": "experimental"
+  },
+  {
+    "path": "astro-portfolio/apps/web/src/content/projects/litepos.md",
+    "kind": "project"
+  },
+  {
+    "path": "astro-portfolio/apps/web/src/content/projects/pearbook.md",
+    "kind": "experimental"
+  },
+  {
+    "path": "astro-portfolio/apps/web/src/content/projects/ascii-shooter.md",
+    "kind": "experimental"
+  },
+  {
+    "path": "astro-portfolio/apps/web/src/content/projects/descent.md",
+    "kind": "experimental"
+  },
+  {
+    "path": "astro-portfolio/apps/web/src/content/projects/oblok.md",
+    "kind": "project"
+  },
+  {
+    "path": "astro-portfolio/apps/web/src/content/projects/blood-pixel.md",
+    "kind": "experimental"
+  },
+  {
+    "path": "astro-portfolio/apps/web/src/content/projects/edubase.md",
+    "kind": "project"
+  },
+  {
+    "path": "astro-portfolio/apps/web/src/content/projects/xencode.md",
+    "kind": "project"
+  },
+  {
+    "path": "astro-portfolio/apps/web/src/content/projects/hujjah.md",
+    "kind": "project"
+  },
+  {
+    "path": "astro-portfolio/apps/web/src/content/projects/ironstead.md",
+    "kind": "experimental"
+  },
+  {
+    "path": "astro-portfolio/apps/web/src/content/projects/larabrix.md",
+    "kind": "project"
+  },
+  {
+    "path": "astro-portfolio/apps/web/src/content/projects/swarmguard.md",
+    "kind": "experimental"
+  },
+  {
+    "path": "astro-portfolio/apps/web/src/content/projects/math-art.md",
+    "kind": "experimental"
+  },
+  {
+    "path": "astro-portfolio/apps/web/src/content/projects/lenden.md",
+    "kind": "project"
+  },
+  {
+    "path": "astro-portfolio/apps/web/src/content/projects/claimyourspot.md",
+    "kind": "experimental"
+  },
+  {
+    "path": "astro-portfolio/apps/web/src/content/projects/timelock.md",
+    "kind": "project"
+  },
+  {
+    "path": "astro-portfolio/apps/web/src/content/projects/e-bank.md",
+    "kind": "project"
+  },
+  {
+    "path": "astro-portfolio/apps/web/src/content/projects/the-web-was-here.md",
+    "kind": "experimental"
+  },
+  {
+    "path": "astro-portfolio/apps/web/src/content/projects/routine-management-system.md",
+    "kind": "project"
+  },
+  {
+    "path": "astro-portfolio/apps/web/src/content/projects/yorimichi.md",
+    "kind": "experimental"
+  },
+  {
+    "path": "astro-portfolio/apps/web/src/content/projects/ctg-explorer.md",
+    "kind": "experimental"
+  },
+  {
+    "path": "astro-portfolio/apps/web/src/content/projects/prompts-library.md",
+    "kind": "experimental"
+  },
+  {
+    "path": "astro-portfolio/apps/web/src/content/projects/mealhq.md",
+    "kind": "experimental"
+  },
+  {
+    "path": "astro-portfolio/apps/web/src/content/projects/dailylog.md",
+    "kind": "experimental"
+  },
+  {
+    "path": "astro-portfolio/apps/web/src/content/projects/lol-dir.md",
+    "kind": "experimental"
+  },
+  {
+    "path": "astro-portfolio/apps/web/src/content/experiences/freelance.md",
+    "kind": "career"
+  },
+  {
+    "path": "astro-portfolio/apps/web/src/content/experiences/amcoders.md",
+    "kind": "career"
+  },
+  {
+    "path": "astro-portfolio/apps/web/src/content/experiences/electronic-first.md",
+    "kind": "career"
+  },
+  {
+    "path": "astro-portfolio/apps/web/src/data/posts.json",
+    "kind": "writing"
+  }
+]
