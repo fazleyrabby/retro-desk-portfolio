@@ -169,7 +169,7 @@ def screw(name, x, y, z, parent, front=False):
 
 def tapered_shell(name, parent):
     front_y, back_y = -.59, .77
-    z0, z1 = .56, 2.36
+    z0, z1 = .56, 2.68
     verts = [
         (-1.28, front_y, z0), (1.28, front_y, z0), (1.28, front_y, z1), (-1.28, front_y, z1),
         (-1.05, back_y, z0+.14), (1.05, back_y, z0+.14), (1.05, back_y, z1-.15), (-1.05, back_y, z1-.15),
@@ -188,23 +188,23 @@ crt = group("CRT")
 # The shell sits flush on the horizontal computer chassis: no pedestal or air gap.
 cube("full-width contact plate", (0, .02, .555), (2.24, 1.18, .055), ivory_dark, crt, .014)
 tapered_shell("tapered monitor housing", crt)
-cube("recessed screen cavity", (0, -.602, 1.57), (2.23, .025, 1.36), recess, crt, .055)
+cube("recessed screen cavity", (0, -.602, 1.725), (2.23, .025, 1.65), recess, crt, .055)
 # Four real frame sections leave an opening for the curved live screen. Their
 # dark inner lips create the recessed CRT tunnel seen in the reference photo.
 for side in [-1, 1]:
-    cube("molded vertical bezel", (side*1.185, -.655, 1.52), (.16, .135, 1.66), ivory_light, crt, .025)
-    cube("inner vertical shadow lip", (side*1.073, -.652, 1.57), (.05, .07, 1.31), recess, crt, .012)
-cube("molded upper bezel", (0, -.655, 2.288), (2.52, .135, .15), ivory_light, crt, .025)
+    cube("molded vertical bezel", (side*1.185, -.655, 1.73), (.16, .135, 1.94), ivory_light, crt, .025)
+    cube("inner vertical shadow lip", (side*1.073, -.652, 1.725), (.05, .07, 1.62), recess, crt, .012)
+cube("molded upper bezel", (0, -.655, 2.63), (2.52, .135, .15), ivory_light, crt, .025)
 cube("molded lower bezel", (0, -.655, .82), (2.52, .135, .24), ivory_light, crt, .025)
-cube("inner upper shadow lip", (0, -.652, 2.225), (2.16, .07, .055), recess, crt, .012)
+cube("inner upper shadow lip", (0, -.652, 2.53), (2.16, .07, .055), recess, crt, .012)
 cube("inner lower shadow lip", (0, -.652, .916), (2.16, .07, .058), recess, crt, .012)
 cube("lower button rail", (0, -.735, .765), (2.41, .025, .16), ivory, crt, .01)
 for x in [-1.11, -1.03, 1.03, 1.11]:
-    screw("bezel screw", x, -.734, .74 if x < 0 else 2.29, crt, True)
+    screw("bezel screw", x, -.734, .74 if x < 0 else 2.63, crt, True)
 for i in range(9):
-    cube(f"right side breathing slot {i+1}", (1.17, -.09 + i*.068, 1.68), (.009, .025, .52), ivory_dark, crt, .003)
+    cube(f"right side breathing slot {i+1}", (1.17, -.09 + i*.068, 1.82), (.009, .025, .6), ivory_dark, crt, .003)
 for i in range(8):
-    cube(f"top vent {i+1}", (-.8 + i*.22, .31, 2.326), (.07, .43, .009), ivory_dark, crt, .004)
+    cube(f"top vent {i+1}", (-.8 + i*.22, .31, 2.646), (.07, .43, .009), ivory_dark, crt, .004)
 for i, x in enumerate([-.52, -.29, -.06, .17]):
     cylinder(f"CRT adjustment knob {i+1}", (x, -.766, .765), .043, .025, black, crt, rotation=(math.pi/2, 0, 0))
     cylinder("knob silver cap", (x, -.784, .765), .014, .007, steel_dark, crt, rotation=(math.pi/2, 0, 0))
@@ -213,13 +213,13 @@ cylinder("power switch inset", (.95, -.784, .765), .03, .01, ivory_dark, crt, ro
 cylinder("power indicator", (.73, -.766, .765), .016, .013, green, crt, rotation=(math.pi/2, 0, 0))
 text("monitor brand", "FAZLEY", (-1.04, -.755, .745), .06, grey, crt, (math.pi/2, 0, 0))
 text("control markings", "H  V  B  C", (-.565, -.75, .835), .033, grey, crt, (math.pi/2, 0, 0))
-cube("monitor shell side seam", (1.234, .19, 1.45), (.008, .83, 1.51), ivory_dark, crt, .002)
+cube("monitor shell side seam", (1.234, .19, 1.59), (.008, .83, 1.79), ivory_dark, crt, .002)
 cube("monitor service decal", (1.237, .45, 1.14), (.008, .22, .29), paper_dark, crt, .002)
 for i in range(3):
     cube("service decal type", (1.245, .365+i*.045, 1.10), (.003, .09, .006), ink, crt, .001)
 cube("rear label", (0, .77, 1.32), (.59, .012, .18), ivory_dark, crt, .008)
 for x in [-.98, .98]:
-    for z in [.72, 2.14]: screw("rear shell screw", x, .785, z, crt, True)
+    for z in [.72, 2.44]: screw("rear shell screw", x, .785, z, crt, True)
 
 
 # Horizontal desktop computer case under the monitor, matching the references.

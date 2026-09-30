@@ -21,7 +21,7 @@ const FOCUSABLE = 'a[href], button:not([disabled]), summary, [tabindex]:not([tab
 
 /** Logical pixel size of the FAZLEY OS surface before it is mapped onto the monitor. */
 export const SCREEN_WIDTH = 1000;
-export const SCREEN_HEIGHT = 605;
+export const SCREEN_HEIGHT = 750;
 
 export class Overlay {
   readonly root: HTMLDivElement;

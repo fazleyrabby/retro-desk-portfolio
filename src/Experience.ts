@@ -34,7 +34,7 @@ export interface ExperienceHandlers {
 }
 
 const views: Record<Exclude<DeskObjectId, 'lamp'>, { position: [number, number, number]; target: [number, number, number] }> = {
-  crt: { position: [-.45, 2.76, 2.22], target: [-.45, 2.76, -.28] },
+  crt: { position: [-.45, 2.91, 2.84], target: [-.45, 2.91, -.28] },
   tower: { position: [.35, 2.15, 2.45], target: [-.45, 1.46, -.3] },
   keyboard: { position: [.55, 2.75, 3.8], target: [.25, 1.25, 1.15] },
   floppy: { position: [-2.92, 2.6, 2.15], target: [-2.9, 1.27, .08] },
@@ -159,17 +159,17 @@ export class Experience {
   private attachCrtScreen(wrapper: THREE.Group) {
     // Vintage CRT glass bows gently toward the viewer while its rim
     // remains tucked behind the deep inner bezel.
-    const glassShape = new THREE.PlaneGeometry(2.07, 1.21, 40, 28);
+    const glassShape = new THREE.PlaneGeometry(2.08, 1.56, 40, 30);
     const points = glassShape.attributes.position;
     for (let i = 0; i < points.count; i++) {
-      const x = points.getX(i) / 1.035;
-      const y = points.getY(i) / .605;
+      const x = points.getX(i) / 1.04;
+      const y = points.getY(i) / .78;
       points.setZ(i, .085 * (1 - .55 * x * x - .45 * y * y));
     }
     points.needsUpdate = true;
     glassShape.computeVertexNormals();
     const liveScreen = new THREE.Mesh(glassShape, this.sceneData.screenMaterial);
-    liveScreen.position.set(0, 1.57, .675);
+    liveScreen.position.set(0, 1.725, .675);
     wrapper.add(liveScreen);
     this.screenMesh = liveScreen;
     const glare = new THREE.Mesh(glassShape.clone(), new THREE.ShaderMaterial({
@@ -203,7 +203,7 @@ export class Experience {
         }
       `,
     }));
-    glare.position.set(0, 1.57, .679);
+    glare.position.set(0, 1.725, .679);
     wrapper.add(glare);
   }
 
@@ -659,10 +659,10 @@ export class Experience {
   getScreenQuad(): THREE.Vector3[] | null {
     if (!this.screenMesh) return null;
     this.screenMesh.updateWorldMatrix(true, false);
-    // Matches the molded bezel opening (2.09 x 1.2525) so the surface fills it.
-    const halfWidth = 2.05 / 2;
-    const halfHeight = 1.24 / 2;
-    const center = new THREE.Vector3(0, .001, 0);
+    // One 4:3 picture plane, shared by the glass and projected DOM surface.
+    const halfWidth = 2.08 / 2;
+    const halfHeight = 1.56 / 2;
+    const center = new THREE.Vector3(0, 0, 0);
     return [
       this.screenMesh.localToWorld(new THREE.Vector3(-halfWidth, halfHeight, 0).add(center)),
       this.screenMesh.localToWorld(new THREE.Vector3(halfWidth, halfHeight, 0).add(center)),
